@@ -11,5 +11,17 @@ config_version=5
 [application]
 
 config/name="Homunculus"
+run/main_scene="uid://b5tvhdsc4ubai"
 config/features=PackedStringArray("4.4", "Forward Plus")
+run/max_fps=60
+boot_splash/bg_color=Color(0.051971, 0.051971, 0.0519709, 1)
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=700
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
