@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cyeaw5qd4xyka"]
+
+[node name="DebugMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 138.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 2
+offset_top = 69.0
+offset_right = 1.0
+offset_bottom = 92.0

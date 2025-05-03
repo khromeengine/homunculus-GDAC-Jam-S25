@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="StageSpec" load_steps=5 format=3 uid="uid://qxrasuxquwan"]
+
+[ext_resource type="Script" uid="uid://pgfrnr268xht" path="res://resources/stage_res/bar_specification_template.gd" id="1_1ev7f"]
+[ext_resource type="Script" uid="uid://1dbf20p0bdyx" path="res://resources/stage_res/stage_template.gd" id="1_om11f"]
+
+[sub_resource type="Resource" id="Resource_1ev7f"]
+script = ExtResource("1_1ev7f")
+initial_target = 0.0
+target_velocity = 0.0
+value_velocity = 0.0
+target_override = false
+target_function = 0
+function_arguments = []
+metadata/_custom_type_script = "uid://pgfrnr268xht"
+
+[sub_resource type="Resource" id="Resource_yul0v"]
+script = ExtResource("1_1ev7f")
+initial_target = 0.0
+target_velocity = 0.0
+value_velocity = 0.0
+target_override = false
+target_function = 0
+function_arguments = []
+metadata/_custom_type_script = "uid://pgfrnr268xht"
+
+[resource]
+script = ExtResource("1_om11f")
+bar_specifications = Array[ExtResource("1_1ev7f")]([SubResource("Resource_1ev7f"), SubResource("Resource_yul0v")])
+metadata/_custom_type_script = "uid://1dbf20p0bdyx"

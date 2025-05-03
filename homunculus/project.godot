@@ -20,6 +20,12 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameState="*res://scripts/state/game_state.gd"
+StageState="*res://scripts/state/stage_state.gd"
+VelocityMath="*res://resources/stage_res/velocity_functions.gd"
+
 [display]
 
 window/size/viewport_width=700
