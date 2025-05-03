@@ -21,5 +21,8 @@ For example:
 - the pipes you're using to grow the creature might start leaking
 - the facility shaking, causing sudden changes in the meters.
 
+## Game Specifications ##
+Made in Godot 4.4.1. Additional information TBD.
+
 ## TODO ##
 idk
