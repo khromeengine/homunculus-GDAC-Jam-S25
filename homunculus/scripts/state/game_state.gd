@@ -12,7 +12,7 @@ signal game_ready()
 
 const MIN_BAR = 0
 const MAX_BAR = 100
-const GOOD_RANGE = 20
+const GOOD_RANGE = 12
 const DONE_PROGRESS = 100
 
 var done_count: int = 0
@@ -99,6 +99,14 @@ func get_bar_value(id: BarID) -> float:
 		return -1
 
 
+func get_do_bar_target_calc(id: BarID, amt: float) -> float:
+	if _bars.has(id):
+		return clampf(_bars[id].target_value + amt, MIN_BAR, MAX_BAR) 
+	else:
+		printerr("Tried getting value of invalid bar ", id)
+		return -1
+
+
 func get_bar_target(id: BarID) -> float:
 	if _bars.has(id):
 		return _bars[id].target_value
@@ -144,12 +152,11 @@ func _on_frame_update(delta: float, time: float) -> void:
 		var min_range: float = clampf(bar.target_value - GOOD_RANGE, MIN_BAR, MAX_BAR)
 		if bar.uses_target_velocity_function:
 			bar.function_step(delta, time)
-		else:
-			bar.target_value = clampf(bar.target_value + bar.target_velocity * delta, MIN_BAR, MAX_BAR)
+		bar.target_value = clampf(bar.target_value + bar.target_velocity * delta, MIN_BAR, MAX_BAR)
 		bar.value = clampf(bar.value + bar.value_velocity * delta, MIN_BAR, MAX_BAR)
 		total_progress += bar.progress
 		if not bar.done:
-			if (bar.value > min_range and bar.value < max_range):
+			if (bar.value >= min_range and bar.value <= max_range):
 				bar.progress += bar.progress_velocity * delta
 			if bar.progress >= DONE_PROGRESS:
 				bar.done = true

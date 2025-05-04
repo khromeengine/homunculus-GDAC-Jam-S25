@@ -37,4 +37,5 @@ func update_bar(spec: BarSpec):
 	
 
 func function_step(delta: float, time: float):
-	target_velocity_function.call(target_velocity, delta, time, function_args)
+	target_velocity = target_velocity_function.call(target_velocity, delta, time, function_args)
+	print(target_velocity)

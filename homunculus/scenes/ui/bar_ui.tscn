@@ -7,19 +7,36 @@
 [node name="BarUI" type="TextureProgressBar"]
 offset_right = 64.0
 offset_bottom = 300.0
-step = 0.2
-value = 60.0
+step = 0.0
 fill_mode = 3
 texture_under = ExtResource("1_a3ipj")
 texture_progress = ExtResource("1_a3ipj")
 tint_under = Color(0.2937, 0.33, 0.296725, 0.788235)
 script = ExtResource("2_r3ur1")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
+[node name="TargetMarker" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 64.0
-grow_horizontal = 2
+offset_bottom = 5.0
+texture = ExtResource("3_r4jag")
+expand_mode = 1
+
+[node name="ValueMarker" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 4.0
+texture = ExtResource("3_r4jag")
+expand_mode = 1
+
+[node name="MaxMarker" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 2.0
+texture = ExtResource("3_r4jag")
+expand_mode = 1
+
+[node name="MinMarker" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 2.0
 texture = ExtResource("3_r4jag")
 expand_mode = 1
