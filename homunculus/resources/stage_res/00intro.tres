@@ -7,9 +7,11 @@
 
 [sub_resource type="Resource" id="Resource_1ev7f"]
 script = ExtResource("1_1ev7f")
-initial_target = 0.0
-target_velocity = 0.0
-value_velocity = 0.0
+initial_target = 50.0
+target_velocity = 2.0
+leaking_value_velocity = -20.0
+input_value_velocity = 15.0
+progress_velocity = 15.0
 target_override = false
 target_function = 0
 function_arguments = []
@@ -17,9 +19,11 @@ metadata/_custom_type_script = "uid://pgfrnr268xht"
 
 [sub_resource type="Resource" id="Resource_yul0v"]
 script = ExtResource("1_1ev7f")
-initial_target = 0.0
-target_velocity = 0.0
-value_velocity = 0.0
+initial_target = 50.0
+target_velocity = -2.0
+leaking_value_velocity = -10.0
+input_value_velocity = 15.0
+progress_velocity = 5.0
 target_override = false
 target_function = 0
 function_arguments = []
@@ -28,7 +32,8 @@ metadata/_custom_type_script = "uid://pgfrnr268xht"
 [sub_resource type="Resource" id="Resource_s1s4h"]
 script = ExtResource("4_seijb")
 time_threshold = 0.0
-linked_sig = Signal()
+signal_name = &""
+signal_argument = &""
 metadata/_custom_type_script = "uid://batikc7b4heqv"
 
 [resource]

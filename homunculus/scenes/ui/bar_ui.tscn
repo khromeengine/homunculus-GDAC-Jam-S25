@@ -1,12 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://befdxlj0e3c7d"]
+[gd_scene load_steps=3 format=3 uid="uid://befdxlj0e3c7d"]
 
 [ext_resource type="Texture2D" uid="uid://diluyjr3x4mu8" path="res://resources/textures/bargradient.tres" id="1_a3ipj"]
+[ext_resource type="Script" uid="uid://crwyv5ddvcee4" path="res://scripts/ui/bar_ui.gd" id="2_r3ur1"]
 
 [node name="BarUI" type="TextureProgressBar"]
 offset_right = 64.0
 offset_bottom = 300.0
+step = 0.2
 value = 60.0
 fill_mode = 3
 texture_under = ExtResource("1_a3ipj")
 texture_progress = ExtResource("1_a3ipj")
 tint_under = Color(0.2937, 0.33, 0.296725, 0.788235)
+script = ExtResource("2_r3ur1")

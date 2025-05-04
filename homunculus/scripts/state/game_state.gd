@@ -17,7 +17,8 @@ const DONE_PROGRESS = 100
 
 var done_count: int = 0
 var ready_count: int = 0
-var avg_progress: float
+var total_progress: float = 0
+var avg_progress: float = 0
 
 var _bars: Dictionary[BarID, Bar];
 var _bar_iterators: Array;
@@ -71,7 +72,24 @@ func add_bar_value_velocity(id: BarID, amt: float) -> float:
 	else:
 		printerr("Tried adding value velocity ", amt, " to invalid bar ", id)
 	return _bars[id].value_velocity - old
-	
+
+
+func add_input_value_velocity(id: BarID, multiplier: float) -> float:
+	var old = _bars[id].value_velocity
+	var amt = _bars[id].input_value_velocity
+	if _bars.has(id):
+		_bars[id].value_velocity += amt * multiplier
+	else:
+		printerr("Tried adding value velocity ", amt, " to invalid bar ", id)
+	return _bars[id].value_velocity - old
+
+
+func set_bar_uses_input(id: BarID, truth: bool) -> void:
+	if _bars.has(id):
+		_bars[id].uses_input_velocity = truth
+	else:
+		printerr("Tried setting input bool of invalid bar ", id)
+
 
 func get_bar_value(id: BarID) -> float:
 	if _bars.has(id):
@@ -118,26 +136,28 @@ func update_bars(spec: StageSpec) -> void:
 
 
 func _on_frame_update(delta: float, time: float) -> void:
-	var avg: float = 0
+	total_progress = 0
+	
 	var lambda = func(id: BarID) -> void:
 		var bar = _bars[id]
+		var max_range: float = clampf(bar.target_value + GOOD_RANGE, MIN_BAR, MAX_BAR)
+		var min_range: float = clampf(bar.target_value - GOOD_RANGE, MIN_BAR, MAX_BAR)
 		if bar.uses_target_velocity_function:
 			bar.function_step(delta, time)
 		else:
-			bar.target_value += bar.target_velocity * delta
-		bar.value += bar.value_velocity * delta
-		avg += bar.progress
+			bar.target_value = clampf(bar.target_value + bar.target_velocity * delta, MIN_BAR, MAX_BAR)
+		bar.value = clampf(bar.value + bar.value_velocity * delta, MIN_BAR, MAX_BAR)
+		total_progress += bar.progress
 		if not bar.done:
-			if (bar.value > bar.target_value - GOOD_RANGE 
-					and bar.value < bar.target_value + GOOD_RANGE):
-				bar.progress += bar.progress_velocity
+			if (bar.value > min_range and bar.value < max_range):
+				bar.progress += bar.progress_velocity * delta
 			if bar.progress >= DONE_PROGRESS:
 				bar.done = true
 				done_count += 1
 				if done_count >= NUM_BARS:
 					StageState.stage_done.emit()
 	_bar_iterators.map(lambda)
-	avg /= NUM_BARS
+	avg_progress = total_progress / NUM_BARS
 
 
 func _init_bar(id: BarID):
