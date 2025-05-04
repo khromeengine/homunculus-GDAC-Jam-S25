@@ -11,5 +11,33 @@ config_version=5
 [application]
 
 config/name="Homunculus"
+run/main_scene="uid://b5tvhdsc4ubai"
 config/features=PackedStringArray("4.4", "Forward Plus")
+run/max_fps=60
+boot_splash/bg_color=Color(0.051971, 0.051971, 0.0519709, 1)
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://scripts/state/game_state.gd"
+StageState="*res://scripts/state/stage_state.gd"
+VelocityMath="*res://scripts/velocity_functions.gd"
+EventSignals="*res://scripts/event_signals.gd"
+EventHandler="*res://scripts/stage/event_handler.gd"
+
+[display]
+
+window/size/viewport_width=700
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
+
+[input]
+
+DebugMenu={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
+]
+}
