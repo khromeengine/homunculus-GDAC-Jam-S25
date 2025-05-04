@@ -97,6 +97,14 @@ func get_bar_value_velocity(id: BarID) -> float:
 		return -1
 
 
+func get_bar_progress(id: BarID) -> float:
+	if _bars.has(id):
+		return _bars[id].progress
+	else:
+		printerr("Tried getting progress of invalid bar ", id)
+		return -1
+
+
 func get_bar(id: BarID) -> Bar:
 	return _bars[id]
 
