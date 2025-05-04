@@ -4,6 +4,7 @@ extends Control
 @onready var t = $"Panel/VBoxContainer/Time"
 @onready var b1 = $"Panel/VBoxContainer/BarVal1"
 @onready var b2 = $"Panel/VBoxContainer/BarVal2"
+@onready var c = $"Panel/VBoxContainer/Completion"
 
 
 func _ready():
@@ -21,3 +22,8 @@ func _on_frame_update(delta, time):
 															GameState.get_bar_target(GameState.BarID.B_ONE)]
 	b2.text = "Bar 2 | Value: %3.1f \t Target: %3.1f" % [GameState.get_bar_value(GameState.BarID.B_TWO),
 															GameState.get_bar_target(GameState.BarID.B_TWO)]
+	c.text = "1 Completion: %3.1f \t|\t 2 Completion: %3.1f \t|\t Avg. Completion: %3.1f" % [
+		GameState.get_bar_progress(GameState.BarID.B_ONE),
+		GameState.get_bar_progress(GameState.BarID.B_TWO),
+		GameState.avg_progress
+	]
