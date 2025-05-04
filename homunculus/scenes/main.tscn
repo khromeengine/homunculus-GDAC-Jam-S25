@@ -6,9 +6,4 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_o5qli")
 
-[node name="Ui" parent="." instance=ExtResource("2_0wfyh")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-grow_vertical = 1
+[node name="UI" parent="." instance=ExtResource("2_0wfyh")]

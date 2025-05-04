@@ -9,15 +9,39 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="LContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -150.0
+offset_right = 64.0
+offset_bottom = 150.0
+grow_vertical = 2
 
-[node name="BarUI" parent="HSplitContainer" instance=ExtResource("1_u7n8c")]
+[node name="BarUI" parent="LContainer" instance=ExtResource("1_u7n8c")]
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="BarUI2" parent="HSplitContainer" instance=ExtResource("1_u7n8c")]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -150.0
+offset_bottom = 150.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="BarUI2" parent="MarginContainer" instance=ExtResource("1_u7n8c")]
 layout_mode = 2
-ID = 1
+size_flags_horizontal = 4
+id = 1
