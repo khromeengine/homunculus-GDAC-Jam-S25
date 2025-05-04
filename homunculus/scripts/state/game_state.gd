@@ -55,12 +55,21 @@ func add_bar_target(id: BarID, amt: float) -> float:
 	return _bars[id].target_value - old
 
 
-func set_bar_target(id: BarID, amt: float):
+func set_bar_target(id: BarID, amt: float) -> void:
 	if _bars.has(id):
 		_bars[id].target_value = clampf(amt, MIN_BAR, MAX_BAR)
 	else:
 		printerr("Tried setting invalid bar ", id, " to target value ", amt) 
 
+
+func add_bar_value_velocity(id: BarID, amt: float) -> float:
+	var old = _bars[id].value_velocity
+	if _bars.has(id):
+		_bars[id].value_velocity += amt
+	else:
+		printerr("Tried adding value velocity ", amt, " to invalid bar ", id)
+	return _bars[id].value_velocity - old
+	
 
 func get_bar_value(id: BarID) -> float:
 	if _bars.has(id):
@@ -73,6 +82,14 @@ func get_bar_value(id: BarID) -> float:
 func get_bar_target(id: BarID) -> float:
 	if _bars.has(id):
 		return _bars[id].target_value
+	else:
+		printerr("Tried getting target value of invalid bar ", id)
+		return -1
+
+
+func get_bar_value_velocity(id: BarID) -> float:
+	if _bars.has(id):
+		return _bars[id].value_velocity
 	else:
 		printerr("Tried getting target value of invalid bar ", id)
 		return -1
@@ -91,7 +108,8 @@ func update_bars(spec: StageSpec) -> void:
 
 
 func _on_frame_update(delta: float, time: float) -> void:
-	var lambda = func(bar: Bar) -> void:
+	var lambda = func(id: BarID) -> void:
+		var bar = _bars[id]
 		if bar.uses_target_velocity_function:
 			bar.function_step(delta, time)
 		else:

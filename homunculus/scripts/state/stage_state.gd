@@ -30,8 +30,8 @@ func _ready():
 
 func _process(delta):
 	if _game_active:
-		frame_update.emit(delta)
 		current_time += delta
+		frame_update.emit(delta, current_time)
 
 
 func _on_set_stage(stage: GameStages):
@@ -48,6 +48,7 @@ func _on_init_game(stage: GameStages):
 
 func _on_game_ready():
 	print("Game ready.")
+	_game_active = true
 	set_stage.emit(current_stage)
 
 
