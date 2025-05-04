@@ -13,9 +13,11 @@ signal game_ready()
 const MIN_BAR = 0
 const MAX_BAR = 100
 const GOOD_RANGE = 20
+const DONE_PROGRESS = 100
 
 var done_count: int = 0
 var ready_count: int = 0
+var avg_progress: float
 
 var _bars: Dictionary[BarID, Bar];
 var _bar_iterators: Array;
@@ -108,6 +110,7 @@ func update_bars(spec: StageSpec) -> void:
 
 
 func _on_frame_update(delta: float, time: float) -> void:
+	var avg: float = 0
 	var lambda = func(id: BarID) -> void:
 		var bar = _bars[id]
 		if bar.uses_target_velocity_function:
@@ -115,16 +118,18 @@ func _on_frame_update(delta: float, time: float) -> void:
 		else:
 			bar.target_value += bar.target_velocity * delta
 		bar.value += bar.value_velocity * delta
+		avg += bar.progress
 		if not bar.done:
 			if (bar.value > bar.target_value - GOOD_RANGE 
 					and bar.value < bar.target_value + GOOD_RANGE):
 				bar.progress += bar.progress_velocity
-			if bar.progress >= bar.done_progress:
+			if bar.progress >= DONE_PROGRESS:
 				bar.done = true
 				done_count += 1
 				if done_count >= NUM_BARS:
 					StageState.stage_done.emit()
 	_bar_iterators.map(lambda)
+	avg /= NUM_BARS
 
 
 func _init_bar(id: BarID):

@@ -24,7 +24,9 @@ config/icon="res://icon.svg"
 
 GameState="*res://scripts/state/game_state.gd"
 StageState="*res://scripts/state/stage_state.gd"
-VelocityMath="*res://resources/stage_res/velocity_functions.gd"
+VelocityMath="*res://scripts/velocity_functions.gd"
+EventSignals="*res://scripts/event_signals.gd"
+EventHandler="*res://scripts/stage/event_handler.gd"
 
 [display]
 

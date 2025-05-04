@@ -1,8 +1,6 @@
 class_name Bar
 extends Node
 
-const done_progress: float = 100
-
 var id: GameState.BarID
 var value: float
 var target_value: float
