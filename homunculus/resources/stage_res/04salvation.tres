@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="StageSpec" load_steps=7 format=3 uid="uid://bayd1dq4123gt"]
+
+[ext_resource type="Script" uid="uid://pgfrnr268xht" path="res://resources/stage_res/bar_specification_template.gd" id="1_527gk"]
+[ext_resource type="Script" uid="uid://xbwrn65j1g2a" path="res://scripts/stage/progression_event.gd" id="2_75y7n"]
+[ext_resource type="Script" uid="uid://1dbf20p0bdyx" path="res://resources/stage_res/stage_template.gd" id="3_48vpo"]
+[ext_resource type="Script" uid="uid://batikc7b4heqv" path="res://scripts/stage/timed_event.gd" id="4_mefy2"]
+
+[sub_resource type="Resource" id="Resource_fxx7b"]
+script = ExtResource("1_527gk")
+initial_target = 0.0
+target_velocity = 0.0
+leaking_value_velocity = 0.0
+input_value_velocity = 0.0
+progress_velocity = 0.0
+target_override = false
+target_function = 0
+function_arguments = []
+metadata/_custom_type_script = "uid://pgfrnr268xht"
+
+[sub_resource type="Resource" id="Resource_iy8g1"]
+script = ExtResource("1_527gk")
+initial_target = 0.0
+target_velocity = 0.0
+leaking_value_velocity = 0.0
+input_value_velocity = 0.0
+progress_velocity = 0.0
+target_override = false
+target_function = 0
+function_arguments = []
+metadata/_custom_type_script = "uid://pgfrnr268xht"
+
+[resource]
+script = ExtResource("3_48vpo")
+bar_specifications = Array[ExtResource("1_527gk")]([SubResource("Resource_fxx7b"), SubResource("Resource_iy8g1")])
+timed_events = Array[ExtResource("4_mefy2")]([null])
+progression_events = Array[ExtResource("2_75y7n")]([null])
+metadata/_custom_type_script = "uid://1dbf20p0bdyx"

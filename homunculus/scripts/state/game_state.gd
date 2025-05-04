@@ -27,6 +27,9 @@ var _bar_iterators: Array;
 func _ready():
 	StageState.frame_update.connect(_on_frame_update)
 	StageState.init_game.connect(_on_init_game)
+	EventSignals.set_target_velocity.connect(_on_signal_set_tvelocity)
+	EventSignals.set_leaking_velocity.connect(_on_signal_set_lvelocity)
+	EventSignals.set_input_velocity.connect(_on_signal_set_ivelocity)
 
 
 func is_ready():
@@ -65,13 +68,34 @@ func set_bar_target(id: BarID, amt: float) -> void:
 		printerr("Tried setting invalid bar ", id, " to target value ", amt) 
 
 
-func add_bar_value_velocity(id: BarID, amt: float) -> float:
-	var old = _bars[id].value_velocity
+func set_bar_target_velocity(id: BarID, amt: float) -> void:
 	if _bars.has(id):
-		_bars[id].value_velocity += amt
+		_bars[id].target_velocity = amt
+	else:
+		printerr("Tried setting invalid bar ", id, " to target value ", amt) 
+
+
+func set_bar_leaking_velocity(id: BarID, amt: float) -> void:
+	if _bars.has(id):
+		_bars[id].leaking_velocity = amt
+	else:
+		printerr("Tried setting invalid bar ", id, " to target value ", amt) 
+
+
+func set_bar_input_velocity(id: BarID, amt: float) -> void:
+	if _bars.has(id):
+		_bars[id].input_value_velocity = amt
+	else:
+		printerr("Tried setting invalid bar ", id, " to target value ", amt) 
+
+
+func add_bar_value_velocity(id: BarID, amt: float) -> float:
+	var old = _bars[id].leaking_value_velocity
+	if _bars.has(id):
+		_bars[id].leaking_value_velocity += amt
 	else:
 		printerr("Tried adding value velocity ", amt, " to invalid bar ", id)
-	return _bars[id].value_velocity - old
+	return _bars[id].leaking_value_velocity - old
 
 
 func add_input_value_velocity(id: BarID, multiplier: float) -> float:
@@ -136,6 +160,8 @@ func get_bar(id: BarID) -> Bar:
 
 
 func update_bars(spec: StageSpec) -> void:
+	assert(not spec.bar_specifications.is_empty())
+	#print(spec.bar_specifications)
 	for id in BarID.values():
 		if _bars.has(id):
 			_bars[id].update_bar(spec.bar_specifications[id])
@@ -182,3 +208,22 @@ func _on_init_game(_stage):
 		print(id)
 		_init_bar(id)
 	BarID.values().map(lambda)
+
+
+func _on_signal_set_tvelocity(args: Array[Variant]):
+	#print("asf")
+	assert(args[0] is BarID)
+	assert(args[1] is float)
+	set_bar_target_velocity(args[0], args[1])
+
+
+func _on_signal_set_lvelocity(args: Array[Variant]):
+	assert(args[0] is BarID)
+	assert(args[1] is float)
+	set_bar_leaking_velocity(args[0], args[1])
+
+
+func _on_signal_set_ivelocity(args: Array[Variant]):
+	assert(args[0] is BarID)
+	assert(args[1] is float)
+	set_bar_input_velocity(args[0], args[1])

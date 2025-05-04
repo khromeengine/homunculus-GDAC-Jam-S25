@@ -8,10 +8,20 @@ signal game_done()
 
 enum GameStages {
 	INTRO,
+	GROWTH,
+	COMPLICATIONS,
+	REGRET,
+	SALVATION,
+	BONUS,
 }
 
 const StageResPath: Dictionary[GameStages, StringName] = {
 	GameStages.INTRO: "res://resources/stage_res/00intro.tres",
+	GameStages.GROWTH: "res://resources/stage_res/01growth.tres",
+	GameStages.COMPLICATIONS: "res://resources/stage_res/02complications.tres",
+	GameStages.REGRET: "res://resources/stage_res/03regret.tres",
+	GameStages.SALVATION: "res://resources/stage_res/04salvation.tres",
+	GameStages.BONUS: "res://resources/stage_res/99bonus.tres",
 }
 
 var current_time: float

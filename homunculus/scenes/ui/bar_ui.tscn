@@ -29,6 +29,7 @@ texture = ExtResource("3_r4jag")
 expand_mode = 1
 
 [node name="MaxMarker" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 2.0
 texture = ExtResource("3_r4jag")

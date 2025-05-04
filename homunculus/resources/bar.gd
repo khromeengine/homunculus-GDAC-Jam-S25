@@ -32,6 +32,7 @@ func update_bar(spec: BarSpec):
 	function_args = spec.function_arguments
 	input_value_velocity = spec.input_value_velocity
 	progress_velocity = spec.progress_velocity
+	progress = 0
 	done = false
 	uses_input_velocity = false
 	

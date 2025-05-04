@@ -13,7 +13,6 @@ var math: Array[Callable] = [
 func randomVelocity(velocity: float, delta: float, time: float, args: Array[Variant]):
 	var weight = -velocity * args[0]
 	var ayo = velocity + randf_range(-100 + weight, 130) * 3 * delta
-	print(ayo)
 	return ayo
 
 

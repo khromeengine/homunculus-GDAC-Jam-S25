@@ -27,7 +27,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="RContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 6
@@ -41,7 +41,7 @@ offset_bottom = 150.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="BarUI2" parent="MarginContainer" instance=ExtResource("1_u7n8c")]
+[node name="BarUI2" parent="RContainer" instance=ExtResource("1_u7n8c")]
 layout_mode = 2
 size_flags_horizontal = 4
 id = 1

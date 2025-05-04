@@ -1,6 +1,7 @@
 extends Control
 
 
+@onready var T = $Panel/VBoxContainer/Title
 @onready var t = $"Panel/VBoxContainer/Time"
 @onready var b1 = $"Panel/VBoxContainer/BarVal1"
 @onready var b2 = $"Panel/VBoxContainer/BarVal2"
@@ -17,6 +18,7 @@ func _process(_delta):
 
 
 func _on_frame_update(delta, time):
+	T.text = "Debug \t|\t Stage %d" % [StageState.current_stage]
 	t.text = "Time: %8.3f \t Delta: %.3f \t FPS: %2.2f" % [time, delta, 1/delta]
 	b1.text = "Bar 1 | Value: %3.1f \t Target: %3.1f" % [GameState.get_bar_value(GameState.BarID.B_ONE),
 															GameState.get_bar_target(GameState.BarID.B_ONE)]
