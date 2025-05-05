@@ -1,12 +1,108 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5tvhdsc4ubai"]
+[gd_scene load_steps=9 format=3 uid="uid://b5tvhdsc4ubai"]
 
 [ext_resource type="Script" uid="uid://bfdcknc3io8o5" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bn5tc7ftqnysg" path="res://scenes/ui/ui.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://b5ja6pofhibcr" path="res://scenes/environment.tscn" id="3_sugp2"]
+[ext_resource type="AudioStream" uid="uid://dvptvc1hx16oo" path="res://assets/sfx/ambient/758207__lukacafuka__glass-panel-shattering.wav" id="4_jyhfs"]
+
+[sub_resource type="Animation" id="Animation_jyhfs"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tefeu"]
+resource_name = "end"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
+_data = {
+&"RESET": SubResource("Animation_tbgi4"),
+&"end": SubResource("Animation_tefeu"),
+&"start": SubResource("Animation_jyhfs")
+}
 
 [node name="Main" type="Node"]
 script = ExtResource("1_o5qli")
 
-[node name="UI" parent="." instance=ExtResource("2_0wfyh")]
-
 [node name="Environment" parent="." instance=ExtResource("3_sugp2")]
+
+[node name="UI" parent="." instance=ExtResource("2_0wfyh")]
+offset_top = -100.0
+offset_bottom = -100.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -25.0
+offset_top = -248.0
+offset_right = 15.0
+offset_bottom = -208.0
+scale = Vector2(18.9998, 417.367)
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jyhfs")
+volume_db = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o6xl0")
+}

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StageSpec" load_steps=9 format=3 uid="uid://qxrasuxquwan"]
+[gd_resource type="Resource" script_class="StageSpec" load_steps=8 format=3 uid="uid://qxrasuxquwan"]
 
 [ext_resource type="Script" uid="uid://pgfrnr268xht" path="res://resources/stage_res/bar_specification_template.gd" id="1_1ev7f"]
 [ext_resource type="Script" uid="uid://1dbf20p0bdyx" path="res://resources/stage_res/stage_template.gd" id="1_om11f"]
@@ -31,21 +31,14 @@ metadata/_custom_type_script = "uid://pgfrnr268xht"
 
 [sub_resource type="Resource" id="Resource_seijb"]
 script = ExtResource("2_1ufie")
-progress_trigger_threshold = 10.0
+progress_trigger_threshold = 60.0
 signal_name = 0
 signal_argument = [0, -4.0]
 metadata/_custom_type_script = "uid://xbwrn65j1g2a"
 
-[sub_resource type="Resource" id="Resource_s1s4h"]
-script = ExtResource("4_seijb")
-time_threshold = 2.0
-signal_name = 0
-signal_argument = [0, 3.0]
-metadata/_custom_type_script = "uid://batikc7b4heqv"
-
 [resource]
 script = ExtResource("1_om11f")
 bar_specifications = Array[ExtResource("1_1ev7f")]([SubResource("Resource_1ufie"), SubResource("Resource_yul0v")])
-timed_events = Array[ExtResource("4_seijb")]([SubResource("Resource_s1s4h")])
+timed_events = Array[ExtResource("4_seijb")]([])
 progression_events = Array[ExtResource("2_1ufie")]([SubResource("Resource_seijb")])
 metadata/_custom_type_script = "uid://1dbf20p0bdyx"

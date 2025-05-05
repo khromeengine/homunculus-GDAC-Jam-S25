@@ -77,7 +77,7 @@ func set_bar_target_velocity(id: BarID, amt: float) -> void:
 
 func set_bar_leaking_velocity(id: BarID, amt: float) -> void:
 	if _bars.has(id):
-		_bars[id].leaking_velocity = amt
+		_bars[id].leaking_value_velocity = amt
 	else:
 		printerr("Tried setting invalid bar ", id, " to target value ", amt) 
 

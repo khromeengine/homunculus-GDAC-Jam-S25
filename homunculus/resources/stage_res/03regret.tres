@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StageSpec" load_steps=7 format=3 uid="uid://lt7tlpy3qxry"]
+[gd_resource type="Resource" script_class="StageSpec" load_steps=9 format=3 uid="uid://lt7tlpy3qxry"]
 
 [ext_resource type="Script" uid="uid://pgfrnr268xht" path="res://resources/stage_res/bar_specification_template.gd" id="1_p5das"]
 [ext_resource type="Script" uid="uid://xbwrn65j1g2a" path="res://scripts/stage/progression_event.gd" id="2_11hp3"]
@@ -7,31 +7,45 @@
 
 [sub_resource type="Resource" id="Resource_fxx7b"]
 script = ExtResource("1_p5das")
-initial_target = 0.0
+initial_target = 50.0
 target_velocity = 0.0
-leaking_value_velocity = 0.0
-input_value_velocity = 0.0
-progress_velocity = 0.0
-target_override = false
-target_function = 0
-function_arguments = []
+leaking_value_velocity = -20.0
+input_value_velocity = 20.0
+progress_velocity = 12.0
+target_override = true
+target_function = 1
+function_arguments = [0.5]
 metadata/_custom_type_script = "uid://pgfrnr268xht"
 
 [sub_resource type="Resource" id="Resource_iy8g1"]
 script = ExtResource("1_p5das")
-initial_target = 0.0
-target_velocity = 0.0
-leaking_value_velocity = 0.0
-input_value_velocity = 0.0
-progress_velocity = 0.0
+initial_target = 20.0
+target_velocity = 8.0
+leaking_value_velocity = 20.0
+input_value_velocity = -20.0
+progress_velocity = 12.0
 target_override = false
 target_function = 0
 function_arguments = []
 metadata/_custom_type_script = "uid://pgfrnr268xht"
 
+[sub_resource type="Resource" id="Resource_p5das"]
+script = ExtResource("4_b63mp")
+time_threshold = 6.0
+signal_name = 0
+signal_argument = [1, -4.0]
+metadata/_custom_type_script = "uid://batikc7b4heqv"
+
+[sub_resource type="Resource" id="Resource_11hp3"]
+script = ExtResource("4_b63mp")
+time_threshold = 20.0
+signal_name = 0
+signal_argument = [1, 6.0]
+metadata/_custom_type_script = "uid://batikc7b4heqv"
+
 [resource]
 script = ExtResource("3_y8s58")
 bar_specifications = Array[ExtResource("1_p5das")]([SubResource("Resource_fxx7b"), SubResource("Resource_iy8g1")])
-timed_events = Array[ExtResource("4_b63mp")]([null])
-progression_events = Array[ExtResource("2_11hp3")]([null])
+timed_events = Array[ExtResource("4_b63mp")]([SubResource("Resource_p5das"), SubResource("Resource_11hp3")])
+progression_events = Array[ExtResource("2_11hp3")]([])
 metadata/_custom_type_script = "uid://1dbf20p0bdyx"

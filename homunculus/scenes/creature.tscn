@@ -1,7 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://bmpeop4fukp26"]
+[gd_scene load_steps=30 format=3 uid="uid://bmpeop4fukp26"]
 
 [ext_resource type="Script" uid="uid://7ge2qtyhrpmi" path="res://scripts/creature.gd" id="1_bvms0"]
 [ext_resource type="Texture2D" uid="uid://bcfvpt0brbtef" path="res://assets/sprites/homunculus/creature.png" id="1_upmfi"]
+[ext_resource type="AudioStream" uid="uid://dc8u0vwite2ij" path="res://assets/sfx/ambient/188008__motion_s__water-ballon-pop-3 (1).wav" id="3_7obff"]
+[ext_resource type="AudioStream" uid="uid://dvsjr7kjk8cpy" path="res://assets/sfx/ambient/697398__cjspellsfish__watermelon-ripping.wav" id="4_rl551"]
+[ext_resource type="AudioStream" uid="uid://bpjl3fcmksd36" path="res://assets/sfx/ambient/159667__lolamadeus__watermelon_squelch10.wav" id="5_2b8l4"]
 
 [sub_resource type="Animation" id="Animation_0s51c"]
 length = 0.001
@@ -16,6 +19,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-20.0]
 }
 
 [sub_resource type="Animation" id="Animation_bvms0"]
@@ -106,6 +121,33 @@ tracks/0/keys = {
 "update": 1,
 "values": [5, 6, 7, 8, 9, 10, 11]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_7obff")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
 
 [sub_resource type="Animation" id="Animation_3c2ov"]
 resource_name = "trans2"
@@ -123,6 +165,33 @@ tracks/0/keys = {
 "update": 1,
 "values": [14, 15, 16, 17, 18, 19, 20, 21]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_rl551")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ygqry"]
 resource_name = "trans3"
@@ -139,6 +208,33 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 1.40494,
+"start_offset": 0.0,
+"stream": ExtResource("5_2b8l4")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k15pb"]
@@ -236,3 +332,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_h6uyy")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/transition = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+pitch_scale = 0.4

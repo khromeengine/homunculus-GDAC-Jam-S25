@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://befdxlj0e3c7d"]
+[gd_scene load_steps=7 format=3 uid="uid://befdxlj0e3c7d"]
 
 [ext_resource type="Texture2D" uid="uid://diluyjr3x4mu8" path="res://resources/textures/bargradient.tres" id="1_a3ipj"]
 [ext_resource type="Script" uid="uid://crwyv5ddvcee4" path="res://scripts/ui/bar_ui.gd" id="2_r3ur1"]
-[ext_resource type="Texture2D" uid="uid://drxfmlpbxsvxq" path="res://icon.svg" id="3_r4jag"]
+[ext_resource type="Texture2D" uid="uid://cn5c36n2xpeoy" path="res://assets/sprites/ui/targetmarker.png" id="3_soi18"]
+[ext_resource type="Texture2D" uid="uid://bwojkr6ebah1g" path="res://assets/sprites/ui/valuemarker.png" id="3_wrx06"]
+[ext_resource type="Texture2D" uid="uid://hw46graurxk3" path="res://assets/sprites/ui/maxmarker.png" id="4_6u2x2"]
+[ext_resource type="Texture2D" uid="uid://b1u2dl2a6y1tr" path="res://assets/sprites/ui/minmarker.png" id="5_xkvea"]
 
 [node name="BarUI" type="TextureProgressBar"]
+texture_filter = 3
 offset_right = 64.0
 offset_bottom = 300.0
 step = 0.0
@@ -14,30 +18,40 @@ texture_progress = ExtResource("1_a3ipj")
 tint_under = Color(0.2937, 0.33, 0.296725, 0.788235)
 script = ExtResource("2_r3ur1")
 
-[node name="TargetMarker" type="TextureRect" parent="."]
+[node name="GoodZone" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 64.0
-offset_bottom = 5.0
-texture = ExtResource("3_r4jag")
-expand_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.839833, 1, 0.69, 0.478431)
 
 [node name="ValueMarker" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 52.0
 offset_bottom = 4.0
-texture = ExtResource("3_r4jag")
+texture = ExtResource("3_wrx06")
 expand_mode = 1
 
 [node name="MaxMarker" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
 layout_mode = 0
 offset_right = 40.0
-offset_bottom = 2.0
-texture = ExtResource("3_r4jag")
+offset_bottom = 4.0
+texture = ExtResource("4_6u2x2")
 expand_mode = 1
 
 [node name="MinMarker" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.313726)
 layout_mode = 0
 offset_right = 40.0
-offset_bottom = 2.0
-texture = ExtResource("3_r4jag")
+offset_bottom = 4.0
+texture = ExtResource("5_xkvea")
+expand_mode = 1
+
+[node name="TargetMarker" type="TextureRect" parent="."]
+modulate = Color(0.99, 0.99, 0.99, 1)
+texture_filter = 3
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 20.0
+texture = ExtResource("3_soi18")
 expand_mode = 1

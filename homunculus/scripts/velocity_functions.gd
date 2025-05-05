@@ -17,4 +17,4 @@ func randomVelocity(velocity: float, delta: float, time: float, args: Array[Vari
 
 
 func sinVelocity(velocity: float, delta: float, time: float, args: Array[Variant]):
-	return (GameState.MAX_BAR / 2) * sin(args[0] * time)
+	return args[0] * (GameState.MAX_BAR / 5) * sin(args[0] * time)

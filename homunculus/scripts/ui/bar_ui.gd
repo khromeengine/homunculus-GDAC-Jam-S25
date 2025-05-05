@@ -7,9 +7,10 @@ extends TextureProgressBar
 @export var width: int = 40
 
 @export var target_width: float = 66
-@export var value_width: float = 52
+@export var value_width: float = 40
 @export var ex_width: float = 40
 
+@onready var box = $GoodZone
 @onready var target_marker = $TargetMarker
 @onready var value_marker = $ValueMarker
 @onready var min_marker = $MinMarker
@@ -28,11 +29,13 @@ func _on_frame_update(delta: float, _time: float):
 	_goto_value = GameState.get_bar_value(id)
 	value = lerpf(value, _goto_value, 1 - pow(lerp_weight, 13 * delta))
 	value_marker.global_position.y = lerpf(botY, topY, value / GameState.MAX_BAR)
-	target_marker.global_position.y = lerpf(botY, topY, GameState.get_bar_target(id) / GameState.MAX_BAR)
+	target_marker.global_position.y = lerpf(botY, topY, GameState.get_bar_target(id) / GameState.MAX_BAR) - target_marker.size.y / 2
 	min_marker.global_position.y = lerpf(botY, topY, 
-		GameState.get_do_bar_target_calc(id, -GameState.GOOD_RANGE) / GameState.MAX_BAR)
+		GameState.get_do_bar_target_calc(id, -GameState.GOOD_RANGE) / GameState.MAX_BAR) - min_marker.size.y
 	max_marker.global_position.y = lerpf(botY, topY, 
 		GameState.get_do_bar_target_calc(id, GameState.GOOD_RANGE) / GameState.MAX_BAR)
+	box.size.y = min_marker.global_position.y - max_marker.global_position.y + min_marker.size.y
+	box.global_position.y = max_marker.global_position.y
 
 
 func _on_bar_ready(checkid: GameState.BarID):
@@ -41,8 +44,7 @@ func _on_bar_ready(checkid: GameState.BarID):
 		target_marker.position.x = (width - target_width) / 2
 		value_marker.size.x = value_width
 		value_marker.position.x = (width - value_width) / 2
-		min_marker.size.x = width
-		max_marker.size.x = width
+		box.size.x = width
 		texture_under.set("height", height)
 		texture_under.set("width", width)
 		StageState.frame_update.connect(_on_frame_update)

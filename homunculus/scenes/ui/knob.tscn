@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxb3x6itm2qju"]
+
+[ext_resource type="Texture2D" uid="uid://b1l2f4sgmpgcr" path="res://assets/sprites/ui/knob.png" id="1_xsywf"]
+[ext_resource type="Script" uid="uid://caueq4bnuhpsm" path="res://scenes/knob.gd" id="2_g51wa"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture_filter = 3
+texture = ExtResource("1_xsywf")
+script = ExtResource("2_g51wa")

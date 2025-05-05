@@ -1,6 +1,8 @@
 extends Node2D
 
 
+func _ready():
+	EventSignals.grow_homunculus.connect(_on_grow_homunculus)
 
 
 func _on_grow_homunculus(_args: Array):
